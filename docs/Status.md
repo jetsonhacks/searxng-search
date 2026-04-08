@@ -2,7 +2,7 @@
 
 ## Current State
 
-Milestone 2 complete.
+Milestone 3 complete.
 
 ## What Was Completed
 
@@ -11,6 +11,10 @@ Milestone 2 complete.
 - Added support for `--base-url` and `SEARXNG_BASE_URL`
 - Normalized results to `title`, `url`, `engine`, `content`, and `score`
 - Returned structured JSON output for both success and error cases
+- Added `tools/searxng/mcp_server.py`
+- Exposed one MCP tool named `search_searxng`
+- Reused the Milestone 2 search helpers for base URL resolution, request execution, and result normalization
+- Returned structured JSON text content for both success and tool-level error cases
 
 ## Validation Notes
 
@@ -19,11 +23,15 @@ Milestone 2 complete.
 - Confirmed both commands returned normalized JSON results from the local SearXNG instance
 - Ran `env -u SEARXNG_BASE_URL python3 tools/searxng/search_searxng.py "jetson orin"`
 - Confirmed the missing-base-URL path returned structured JSON error output and exited nonzero
+- Ran `python3 -m py_compile tools/searxng/mcp_server.py tools/searxng/search_searxng.py`
+- Ran a local JSON-RPC initialize request against `tools/searxng/mcp_server.py`
+- Ran a local JSON-RPC `tools/list` request and confirmed one `search_searxng` tool with a structured input schema
+- Ran a local JSON-RPC `tools/call` request without `SEARXNG_BASE_URL` and confirmed structured error output with `isError: true`
 
 ## Current Focus
 
-Prepare for Milestone 3: expose search through MCP.
+Prepare for Milestone 4: integrate with OpenClaw.
 
 ## Next Step
 
-Implement `tools/searxng/mcp_server.py`
+Add a controlled OpenClaw integration example without changing the core search behavior.

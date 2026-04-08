@@ -3,6 +3,8 @@
 ## Milestone 1
 Install and uninstall SearXNG
 
+Status: Done
+
 ### Deliverables
 - `tools/searxng/install-searxng.sh`
 - `tools/searxng/uninstall-searxng.sh`
@@ -14,6 +16,8 @@ Install and uninstall SearXNG
 
 ## Milestone 2
 Demonstrate SearXNG search from Python
+
+Status: Current
 
 ### Deliverables
 - `tools/searxng/search_searxng.py`

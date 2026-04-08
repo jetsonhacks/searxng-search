@@ -2,24 +2,26 @@
 
 ## Current State
 
-Repository initialized.
+Milestone 1 complete.
 
-## What Exists
+## What Was Completed
 
-- Repository created on GitHub
-- Local clone created
-- Initial project framing in progress
+- Added `tools/searxng/install-searxng.sh`
+- Added `tools/searxng/uninstall-searxng.sh`
+- Validated install and uninstall cycle locally
+- Confirmed SearXNG served JSON search results successfully
+
+## Validation Notes
+
+- Initial install on port 8080 conflicted with NemoClaw
+- Installing on port 8081 succeeded
+- Uninstall removed the local container, generated files, and image cleanly
+- Re-running uninstall completed cleanly when resources were already absent
 
 ## Current Focus
 
-Define the repository structure and create the initial project documents.
+Prepare for Milestone 2: demonstrate SearXNG search from Python.
 
 ## Next Step
 
-Implement Milestone 1:
-- `tools/searxng/install-searxng.sh`
-- `tools/searxng/uninstall-searxng.sh`
-
-## Notes
-
-The project will stay agent-agnostic until the OpenClaw integration phase. MCP is part of the plan, but packaging is intentionally deferred.
+Implement `tools/searxng/search_searxng.py`

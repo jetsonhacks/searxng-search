@@ -5,23 +5,51 @@ description: Use SearXNG-backed web search for current public information when l
 
 # SearXNG Search
 
-This skill will describe how and when to use the repository's SearXNG-based search capability.
+Use this skill when current public web information is needed and local repository context is not enough.
 
-## Intended Role
+## When To Use It
 
-Use SearXNG search when:
-- current public web information is needed
-- the answer is not already present in local project files
-- structured search results are useful to the workflow
+Use this SearXNG-backed search capability when:
+- the task depends on current public web information
+- local files do not already contain the answer
+- structured search results are more useful than free-form browsing
 
-## Guidance
+## Tool Boundary
 
-- Start with a focused query
-- Prefer a small number of results
-- Treat search snippets as hints, not proof
-- Verify precise claims when accuracy matters
-- Keep the search flow inspectable and reproducible
+This skill uses one MCP tool:
+- `search_searxng`
 
-## Status
+The tool accepts:
+- `query` as a required string
+- `base_url` as an optional string
+- `limit` as an optional integer
+- `timeout` as an optional number
 
-Work in progress. This skill will be completed after the search tool and MCP integration are in place.
+If `base_url` is not provided, the MCP server expects `SEARXNG_BASE_URL` to be set in the server environment.
+
+## Expected Result Shape
+
+The tool returns structured JSON text with:
+- `ok`
+- `query`
+- `base_url`
+- `result_count`
+- `results`
+
+Each item in `results` includes:
+- `title`
+- `url`
+- `engine`
+- `content`
+- `score`
+
+If the request fails, the tool returns structured JSON text with:
+- `ok`
+- `error`
+
+## Practical Use
+
+- Start with a focused `query`
+- Keep `limit` small unless more coverage is necessary
+- Treat `content` snippets as leads to verify, not final proof
+- For OpenClaw usage, stay within the MCP boundary described in `examples/openclaw/README.md`

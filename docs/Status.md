@@ -2,7 +2,7 @@
 
 ## Current State
 
-Milestone 3 complete.
+Milestone 4 complete.
 
 ## What Was Completed
 
@@ -15,6 +15,9 @@ Milestone 3 complete.
 - Exposed one MCP tool named `search_searxng`
 - Reused the Milestone 2 search helpers for base URL resolution, request execution, and result normalization
 - Returned structured JSON text content for both success and tool-level error cases
+- Added `examples/openclaw/README.md`
+- Documented a controlled OpenClaw integration that uses the MCP server as the boundary
+- Kept the core search logic and MCP implementation unchanged for the example
 
 ## Validation Notes
 
@@ -27,11 +30,13 @@ Milestone 3 complete.
 - Ran a local JSON-RPC initialize request against `tools/searxng/mcp_server.py`
 - Ran a local JSON-RPC `tools/list` request and confirmed one `search_searxng` tool with a structured input schema
 - Ran a local JSON-RPC `tools/call` request without `SEARXNG_BASE_URL` and confirmed structured error output with `isError: true`
+- Reviewed the OpenClaw example instructions against the implemented MCP tool name, command, working directory, and required environment variable
+- Confirmed the example keeps OpenClaw-specific setup inside `examples/openclaw/README.md`
 
 ## Current Focus
 
-Prepare for Milestone 4: integrate with OpenClaw.
+Prepare for Milestone 5: add the project-owned OpenClaw skill.
 
 ## Next Step
 
-Add a controlled OpenClaw integration example without changing the core search behavior.
+Complete `skills/searxng-search/SKILL.md` so it matches the implemented tool behavior and the documented OpenClaw example.

@@ -1,44 +1,71 @@
 # searxng-search
 
-This repository is a practical walk through of building a SearXNG-based  search capability from first principles.
+`searxng-search` is a practical reference project for building an agent-facing search capability on top of [SearXNG](https://github.com/searxng/searxng).
 
-It covers the full path:
+SearXNG is a free, self-hostable metasearch engine that can return search results as JSON. That makes it useful when you want private, inspectable web search with structured output, rather than treating search as a black box.
+
+This repository shows the full path from a local SearXNG install to a reusable search capability:
+
 - install and uninstall a local SearXNG instance
 - query SearXNG directly from Python
 - expose the same search behavior through MCP
 - connect that MCP server to OpenClaw
 - add a project-owned OpenClaw skill that matches the implemented MCP tool
 
-The goal is to make each step easy to inspect and validate without hiding the moving parts behind extra infrastructure.
+The goal is to keep each layer small, readable, and easy to validate.
 
-## Where To Start
+## Quick Start
 
-- `docs/Architecture.md` explains the implemented structure and boundaries
-- `docs/Validation.md` shows how to validate the repository end to end
-- `docs/development/` contains milestone and development-history documents
-
-## Repository Progression
-
-1. Install and uninstall SearXNG with the shell scripts under `tools/searxng/`
-2. Validate direct search with `tools/searxng/search_searxng.py`
-3. Start the MCP wrapper with `tools/searxng/mcp_server.py`
-4. Follow `examples/openclaw/README.md` for the OpenClaw example
-5. Use `skills/searxng-search/SKILL.md` as the project-owned OpenClaw skill definition
-
-## Lightweight Validation
-
-Use these checks to validate the repository end to end:
+Bring up a local SearXNG instance:
 
 ```bash
-python3 -m py_compile tools/searxng/search_searxng.py tools/searxng/mcp_server.py
+SEARXNG_PORT=8081 bash tools/searxng/install-searxng.sh
+```
+
+Validate direct search from Python:
+
+```bash
 SEARXNG_BASE_URL=http://127.0.0.1:8081 python3 tools/searxng/search_searxng.py "jetson orin"
 ```
 
-Then review:
-- `examples/openclaw/README.md` for the MCP server command, working directory, and environment setup
-- `skills/searxng-search/SKILL.md` for the exact `search_searxng` tool boundary used by the OpenClaw phase
+This example uses `8081`. The install script defaults to `8080` unless you set `SEARXNG_PORT`, so use the same port value in both the install and search commands.
+
+For the full validation path, including MCP and the OpenClaw example, see `docs/Validation.md`.
+
+## What This Repository Covers
+
+This repository is organized as a progression:
+
+1. Local SearXNG install and uninstall with shell scripts under `tools/searxng/`
+2. Direct Python search with `tools/searxng/search_searxng.py`
+3. MCP exposure with `tools/searxng/mcp_server.py`
+4. OpenClaw example integration under `examples/openclaw/`
+5. Project-owned skill definition in `skills/searxng-search/SKILL.md`
+
+## Reader Guide
+
+- `docs/Architecture.md` explains the implemented structure and boundaries
+- `docs/Validation.md` shows how to validate the repository end to end
+- `examples/openclaw/README.md` documents the OpenClaw example integration
+- `skills/searxng-search/SKILL.md` defines the project-owned OpenClaw skill
+- `docs/development/` contains milestone and development-history documents
+
+## Why Use This Repository
+
+This project is useful if you want to:
+
+- understand how to turn SearXNG into a small reusable search component
+- keep the core search logic inspectable
+- use MCP as a clean integration boundary
+- see a controlled OpenClaw example without making the whole project agent-specific
+
+## Notes
+
+- The validated local workflow in this repository used port `8081`, because port `8080` conflicted with NemoClaw in testing.
+- Outside the OpenClaw example and skill, the project stays agent-agnostic.
 
 ## Releases
 
-### Initial Release (April, 2026)
+### Initial Release (April 2026)
 
+* This release includes the complete reference flow: local SearXNG install and uninstall, direct Python search, MCP exposure, the OpenClaw example, and the project-owned skill.

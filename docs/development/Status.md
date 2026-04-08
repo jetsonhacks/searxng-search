@@ -38,7 +38,7 @@ The repository now covers the full learning path from local SearXNG install thro
 
 ### Milestone 6
 - Updated `README.md` to reflect the completed repository progression
-- Marked completed milestones accurately in `docs/Plan.md`
+- Marked completed milestones accurately in `docs/development/Plan.md`
 - Tightened OpenClaw example documentation to match the implemented required and optional MCP tool arguments
 - Added lightweight end-to-end validation guidance without introducing new test infrastructure
 
@@ -63,8 +63,8 @@ The repository now covers the full learning path from local SearXNG install thro
 - Confirmed the skill notes the `SEARXNG_BASE_URL` expectation without promising unsupported behavior
 - Confirmed no unsupported claims were added to the skill
 - Compared `README.md` against the implemented repository progression: install or uninstall, Python search, MCP wrapper, OpenClaw example, and project-owned skill
-- Compared `docs/Plan.md` against the current completed milestone state
-- Compared `docs/Status.md` against the final repository state for Milestone 6
+- Compared `docs/development/Plan.md` against the current completed milestone state
+- Compared `docs/development/Status.md` against the final repository state for Milestone 6
 - Compared `examples/openclaw/README.md` against `tools/searxng/mcp_server.py` for tool name, required argument, optional arguments, command, working directory, and environment expectation
 - Ran `python3 -m py_compile tools/searxng/search_searxng.py tools/searxng/mcp_server.py`
 - Confirmed the lightweight validation instructions are practical and consistent with the implemented workflow

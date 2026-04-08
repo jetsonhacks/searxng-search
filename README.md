@@ -11,6 +11,12 @@ It covers the full path:
 
 The goal is to make each step easy to inspect and validate without hiding the moving parts behind extra infrastructure.
 
+## Reader Docs
+
+- `docs/Architecture.md` explains the implemented structure and boundaries
+- `docs/Validation.md` shows how to validate the repository end to end
+- `docs/development/` contains milestone and development-history documents
+
 ## Repository Progression
 
 1. Install and uninstall SearXNG with the shell scripts under `tools/searxng/`

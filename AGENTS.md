@@ -25,7 +25,7 @@ This repository is a practical walk through of building a SearXNG-based search t
 - Work one milestone at a time
 - Prefer small diffs
 - Explain what was changed and how it was validated
-- Keep `docs/Status.md` up to date when milestones change or important implementation decisions are made
+- Keep `docs/development/Status.md` up to date when milestones change or important implementation decisions are made
 - Preserve the learning value of the repository; do not hide important steps behind unnecessary abstractions
 
 ## Coding Style

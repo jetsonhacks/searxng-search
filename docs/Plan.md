@@ -17,7 +17,7 @@ Status: Done
 ## Milestone 2
 Demonstrate SearXNG search from Python
 
-Status: Current
+Status: Done
 
 ### Deliverables
 - `tools/searxng/search_searxng.py`

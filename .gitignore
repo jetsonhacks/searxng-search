@@ -1,0 +1,7 @@
+# Local runtime files created by the Milestone 1 SearXNG workflow.
+.local/
+.codex
+
+# Common Python cache files.
+__pycache__/
+*.pyc

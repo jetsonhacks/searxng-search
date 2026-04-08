@@ -1,6 +1,6 @@
 # searxng-search
 
-This repository is a practical walk through of building a SearXNG-based search tool from first principles.
+This repository is a practical walk through of building a SearXNG-based  search capability from first principles.
 
 It covers the full path:
 - install and uninstall a local SearXNG instance
@@ -11,7 +11,7 @@ It covers the full path:
 
 The goal is to make each step easy to inspect and validate without hiding the moving parts behind extra infrastructure.
 
-## Reader Docs
+## Where To Start
 
 - `docs/Architecture.md` explains the implemented structure and boundaries
 - `docs/Validation.md` shows how to validate the repository end to end
@@ -37,3 +37,8 @@ SEARXNG_BASE_URL=http://127.0.0.1:8081 python3 tools/searxng/search_searxng.py "
 Then review:
 - `examples/openclaw/README.md` for the MCP server command, working directory, and environment setup
 - `skills/searxng-search/SKILL.md` for the exact `search_searxng` tool boundary used by the OpenClaw phase
+
+## Releases
+
+### Initial Release (April, 2026)
+

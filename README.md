@@ -2,7 +2,7 @@
 
 `searxng-search` is a practical reference project for building an agent-facing search capability on top of [SearXNG](https://github.com/searxng/searxng).
 
-SearXNG is a free, self-hostable metasearch engine that can return search results as JSON. That makes it useful when you want private, inspectable web search with structured output, rather than treating search as a black box.
+[SearXNG](https://searxng.org/) is a free, self-hostable metasearch engine that can return search results as JSON. That makes it useful when you want private, inspectable web search with structured output, rather than treating search as a black box.
 
 This repository shows the full path from a local SearXNG install to a reusable search capability:
 

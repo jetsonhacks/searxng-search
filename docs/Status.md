@@ -2,9 +2,16 @@
 
 ## Current State
 
-Milestone 5 complete.
+Milestone 6 complete.
+
+The repository now covers the full learning path from local SearXNG install through Python search, MCP exposure, OpenClaw integration, and the project-owned OpenClaw skill.
 
 ## What Was Completed
+
+### Milestone 1
+- Added `tools/searxng/install-searxng.sh`
+- Added `tools/searxng/uninstall-searxng.sh`
+- Documented a clean local install and removal path for SearXNG
 
 ### Milestone 2
 - Added `tools/searxng/search_searxng.py`
@@ -29,6 +36,12 @@ Milestone 5 complete.
 - Matched the skill to the implemented MCP tool name, inputs, and result shape
 - Kept the skill aligned with the documented OpenClaw example and MCP boundary
 
+### Milestone 6
+- Updated `README.md` to reflect the completed repository progression
+- Marked completed milestones accurately in `docs/Plan.md`
+- Tightened OpenClaw example documentation to match the implemented required and optional MCP tool arguments
+- Added lightweight end-to-end validation guidance without introducing new test infrastructure
+
 ## Validation Notes
 
 - Ran `python3 tools/searxng/search_searxng.py --base-url http://127.0.0.1:8081 "jetson orin"`
@@ -49,11 +62,18 @@ Milestone 5 complete.
 - Confirmed the skill reflects the implemented structured result shape and error shape
 - Confirmed the skill notes the `SEARXNG_BASE_URL` expectation without promising unsupported behavior
 - Confirmed no unsupported claims were added to the skill
+- Compared `README.md` against the implemented repository progression: install or uninstall, Python search, MCP wrapper, OpenClaw example, and project-owned skill
+- Compared `docs/Plan.md` against the current completed milestone state
+- Compared `docs/Status.md` against the final repository state for Milestone 6
+- Compared `examples/openclaw/README.md` against `tools/searxng/mcp_server.py` for tool name, required argument, optional arguments, command, working directory, and environment expectation
+- Ran `python3 -m py_compile tools/searxng/search_searxng.py tools/searxng/mcp_server.py`
+- Confirmed the lightweight validation instructions are practical and consistent with the implemented workflow
+- Confirmed the end-to-end learning path is understandable from the repository docs
 
 ## Current Focus
 
-Prepare for Milestone 6: refine tests and documentation.
+Milestones complete. Keep the repository stable, readable, and easy to validate.
 
 ## Next Step
 
-Review the repository end to end for lightweight validation gaps and documentation cleanup needed for Milestone 6.
+Use the documented smoke-test style checks when making future maintenance updates, and keep docs aligned with the implemented tool behavior.

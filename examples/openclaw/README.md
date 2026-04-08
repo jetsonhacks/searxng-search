@@ -15,7 +15,7 @@ OpenClaw talks to that MCP server over stdio, and the MCP server reuses the exis
 ## Prerequisites
 
 - SearXNG is installed and reachable locally
-- OpenClaw is installed on your machine
+- OpenClaw is installed and can start an MCP server from the repository root
 - `SEARXNG_BASE_URL` points at the local SearXNG instance
 
 Example:
@@ -52,7 +52,7 @@ python3 tools/searxng/mcp_server.py
 Set the working directory to the repository root:
 
 ```text
-/home/jim/searxng-search
+<repository-root>
 ```
 
 Set this environment variable for the server process:
@@ -73,11 +73,15 @@ The MCP tool expects this argument shape:
 
 ```json
 {
-  "query": "jetson orin",
-  "limit": 5,
-  "timeout": 10.0
+  "query": "jetson orin"
 }
 ```
+
+Optional arguments:
+
+- `base_url`
+- `limit`
+- `timeout`
 
 The response content is structured JSON text with the same normalized fields used by the Milestone 2 command-line search:
 
@@ -132,5 +136,5 @@ python3 tools/searxng/mcp_server.py
 
 - It does not change `tools/searxng/search_searxng.py`
 - It does not change `tools/searxng/mcp_server.py`
-- It does not add an OpenClaw skill
+- It does not define the project-owned OpenClaw skill inline
 - It does not introduce packaging or distribution setup

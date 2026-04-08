@@ -30,6 +30,8 @@ Status: Done
 ## Milestone 3
 Expose search through MCP
 
+Status: Done
+
 ### Deliverables
 - `tools/searxng/mcp_server.py`
 
@@ -41,6 +43,8 @@ Expose search through MCP
 ## Milestone 4
 Integrate with OpenClaw
 
+Status: Done
+
 ### Deliverables
 - Example integration under `examples/` or repository docs
 
@@ -50,6 +54,8 @@ Integrate with OpenClaw
 
 ## Milestone 5
 Add the OpenClaw skill
+
+Status: Done
 
 ### Deliverables
 - `skills/searxng-search/SKILL.md`
@@ -61,6 +67,8 @@ Add the OpenClaw skill
 
 ## Milestone 6
 Refine tests and documentation
+
+Status: Done
 
 ### Deliverables
 - Expanded docs

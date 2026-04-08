@@ -1,9 +1,33 @@
 # searxng-search
 
-> Work In Progress
+This repository is a practical walk through of building a SearXNG-based search tool from first principles.
 
-SearXNG provides free, private web search. It also offers search results in JSON format, making it a strong fit for AI agents and other automated tools. That means structured results, no advertising, and more control over the search workflow.
+It covers the full path:
+- install and uninstall a local SearXNG instance
+- query SearXNG directly from Python
+- expose the same search behavior through MCP
+- connect that MCP server to OpenClaw
+- add a project-owned OpenClaw skill that matches the implemented MCP tool
 
-This repository is a practical walk through of building a SearXNG-based search tool from first principles. We start by installing SearXNG, verifying that it works, calling it directly from Python, and then connecting it to agent-style workflows.
+The goal is to make each step easy to inspect and validate without hiding the moving parts behind extra infrastructure.
 
-The goal is to understand the whole path, not just use a black box. As this repository develops, it will show how to move from a running local search service to a reusable search capability that can be integrated into systems such as OpenClaw.
+## Repository Progression
+
+1. Install and uninstall SearXNG with the shell scripts under `tools/searxng/`
+2. Validate direct search with `tools/searxng/search_searxng.py`
+3. Start the MCP wrapper with `tools/searxng/mcp_server.py`
+4. Follow `examples/openclaw/README.md` for the OpenClaw example
+5. Use `skills/searxng-search/SKILL.md` as the project-owned OpenClaw skill definition
+
+## Lightweight Validation
+
+Use these checks to validate the repository end to end:
+
+```bash
+python3 -m py_compile tools/searxng/search_searxng.py tools/searxng/mcp_server.py
+SEARXNG_BASE_URL=http://127.0.0.1:8081 python3 tools/searxng/search_searxng.py "jetson orin"
+```
+
+Then review:
+- `examples/openclaw/README.md` for the MCP server command, working directory, and environment setup
+- `skills/searxng-search/SKILL.md` for the exact `search_searxng` tool boundary used by the OpenClaw phase

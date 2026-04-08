@@ -13,11 +13,22 @@ The main goal is to keep the core search behavior understandable on its own, the
 The local SearXNG service is the search backend.
 It is installed and removed with the shell scripts under `tools/searxng/`.
 Everything else in the repository depends on this service being reachable.
+It is also a browser-facing web application, so when it is running locally on port `8081` you can open `http://localhost:8081/search`.
 
 ### `tools/searxng/search_searxng.py`
 
 This is the core capability.
 It sends a query to the SearXNG JSON endpoint, normalizes the response, and returns structured JSON for both success and failure cases.
+
+### `examples/openai-compatible-tool-calling/`
+
+This is the planned OpenAI-compatible tool-calling example layer.
+It is intended to show how a model using an OpenAI-compatible API can call a SearXNG-backed search tool while reusing the existing Python search behavior.
+
+### `docs/providers/`
+
+This is the provider documentation area.
+It keeps launch recipes and environment-specific model-server notes separate from the core SearXNG feature implementation.
 
 ### `tools/searxng/mcp_server.py`
 
@@ -44,10 +55,13 @@ It describes when to use the search capability, what tool boundary to expect, an
 ## Repository Flow
 
 1. Install or remove the local SearXNG service with the shell scripts under `tools/searxng/`.
-2. Validate direct search with `tools/searxng/search_searxng.py`.
-3. Start or exercise the MCP wrapper with `tools/searxng/mcp_server.py`.
-4. Follow `examples/openclaw/README.md` for the OpenClaw example.
-5. Read `skills/searxng-search/SKILL.md` for the project-owned skill guidance.
+2. Open `http://localhost:8081/search` to use the browser-facing SearXNG interface when the local service runs on port `8081`.
+3. Validate direct search with `tools/searxng/search_searxng.py`.
+4. Follow `examples/openai-compatible-tool-calling/README.md` for the OpenAI-compatible tool-calling example.
+5. Use `docs/providers/overview.md` and the provider notes when you need a compatible model endpoint for the OpenAI-compatible example.
+6. Start or exercise the MCP wrapper with `tools/searxng/mcp_server.py`.
+7. Follow `examples/openclaw/README.md` for the OpenClaw example.
+8. Read `skills/searxng-search/SKILL.md` for the project-owned skill guidance.
 
 ## Out Of Scope
 

@@ -5,6 +5,9 @@
 - You are running commands from the repository root.
 - Docker is installed and the Docker daemon is reachable.
 - Python 3 is available.
+- Python dependencies are installed from `pyproject.toml`.
+- If you want to run the Python examples with the recommended workflow, use `uv sync` followed by `uv run ...`.
+- If you prefer standard Python tooling, use a virtual environment before installing dependencies with `pip`.
 - OpenClaw validation is documentation-level unless you have OpenClaw installed locally.
 - Use the SearXNG port that matches your install configuration. The install script defaults to `8080` unless you set `SEARXNG_PORT`, and the documented validation history also includes examples on `8081`.
 
@@ -23,6 +26,12 @@ curl --silent --show-error --fail "http://127.0.0.1:<port>/search?q=smoke+test&f
 ```
 
 The response should be JSON and include a `results` field.
+
+If you install SearXNG locally on port `8081`, you can also verify the browser-facing interface at:
+
+```text
+http://localhost:8081/search
+```
 
 Remove the local install:
 
@@ -111,6 +120,12 @@ Validate the skill at the documentation level by checking that `skills/searxng-s
 - the structured success shape
 - the structured error shape
 - the `SEARXNG_BASE_URL` expectation when `base_url` is not provided
+
+## OpenAI-Compatible Tool Calling
+
+The first OpenAI-compatible tool-calling path has been validated end to end against a llama.cpp OpenAI-compatible endpoint at `http://127.0.0.1:8080/v1` and a local SearXNG instance at `http://localhost:8081`.
+
+See `examples/openai-compatible-tool-calling/README.md` for the validated command and the manual validation workflow.
 
 ## Development History
 

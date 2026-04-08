@@ -5,3 +5,10 @@
 # Common Python cache files.
 __pycache__/
 *.pyc
+
+# Local Python environments and generated packaging metadata.
+.venv/
+*.egg-info/
+
+# Optional local uv lockfile for ad hoc environment syncs.
+uv.lock

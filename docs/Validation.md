@@ -114,5 +114,5 @@ Validate the skill at the documentation level by checking that `skills/searxng-s
 
 ## Development History
 
-The development-history documents live under `docs/development/`.
+The development-history documents live under `dev/`.
 Use them for milestone history and status tracking, not as the primary reader path through the repository.

@@ -2,6 +2,8 @@
 
 This repository is a practical walk through of building a SearXNG-based search tool from first principles.
 
+This file is the operational guide for coding agents working in this repository.
+
 ## Goals
 
 - Install and uninstall SearXNG cleanly
@@ -25,7 +27,7 @@ This repository is a practical walk through of building a SearXNG-based search t
 - Work one milestone at a time
 - Prefer small diffs
 - Explain what was changed and how it was validated
-- Keep `docs/development/Status.md` up to date when milestones change or important implementation decisions are made
+- Keep `dev/Status.md` up to date when milestones change or important implementation decisions are made
 - Preserve the learning value of the repository; do not hide important steps behind unnecessary abstractions
 
 ## Coding Style
@@ -48,6 +50,8 @@ This repository is a practical walk through of building a SearXNG-based search t
 - Write for readers who want to understand how the system works
 - Avoid marketing language
 - Keep the project grounded in first principles
+- Keep `docs/` user-facing
+- Keep `dev/` for development artifacts such as plans, status, feature specs, and ADRs
 
 ## Current Priority
 

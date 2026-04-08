@@ -46,9 +46,14 @@ This repository is organized as a progression:
 
 - `docs/Architecture.md` explains the implemented structure and boundaries
 - `docs/Validation.md` shows how to validate the repository end to end
+- `dev/README.md` explains what development artifacts live under `dev/`
 - `examples/openclaw/README.md` documents the OpenClaw example integration
 - `skills/searxng-search/SKILL.md` defines the project-owned OpenClaw skill
-- `docs/development/` contains milestone and development-history documents
+- `dev/` contains milestone and development-history documents
+
+`docs/` is reserved for user-facing documentation.
+`dev/` contains development artifacts such as plans, status, feature specs, and ADRs.
+`AGENTS.md` is the operational guide for coding agents working in this repository.
 
 ## Why Use This Repository
 

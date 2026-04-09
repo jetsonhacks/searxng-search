@@ -77,7 +77,11 @@ Successful output should include:
 First check the Python entry points parse cleanly:
 
 ```bash
-python3 -m py_compile tools/searxng/search_searxng.py tools/searxng/mcp_server.py
+python3 -m py_compile \
+  tools/searxng/search_searxng.py \
+  tools/searxng/mcp_common.py \
+  tools/searxng/mcp_server.py \
+  tools/searxng/mcp_http_server.py
 ```
 
 Then start the MCP server:
@@ -102,6 +106,51 @@ To confirm the failure path without adding extra test machinery:
 - start the server without `SEARXNG_BASE_URL`
 - use an MCP client or the documented OpenClaw example to call `search_searxng`
 - confirm the tool returns structured error output instead of crashing
+
+### HTTP MCP For llama.cpp WebUI
+
+Start the HTTP MCP server:
+
+```bash
+SEARXNG_BASE_URL=http://127.0.0.1:<port> \
+python3 tools/searxng/mcp_http_server.py --host 127.0.0.1 --port 8765
+```
+
+Verify the health endpoint:
+
+```bash
+curl --silent --show-error --fail http://127.0.0.1:8765/health
+```
+
+Verify the main MCP HTTP endpoint:
+
+```bash
+curl --silent --show-error \
+  -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"smoke-test","version":"0.1.0"}}}' \
+  http://127.0.0.1:8765/mcp
+```
+
+Verify tool discovery:
+
+```bash
+curl --silent --show-error \
+  -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}' \
+  http://127.0.0.1:8765/mcp
+```
+
+For llama.cpp WebUI registration, use:
+
+```text
+http://127.0.0.1:8765/mcp
+```
+
+If your local client still expects the older SSE transport, use:
+
+```text
+http://127.0.0.1:8765/sse
+```
 
 ## OpenClaw Example
 

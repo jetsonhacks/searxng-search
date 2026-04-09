@@ -1,6 +1,6 @@
 # llama.cpp Provider Notes
 
-This file documents llama.cpp-style launch artifacts for the OpenAI-compatible examples in this repository.
+This file documents llama.cpp-style launch artifacts for the OpenAI-compatible examples in this repository, including the MCP HTTP path used by llama.cpp WebUI.
 
 llama.cpp is documented here because it is the first provider path that has been tested end to end in this repository.
 
@@ -79,8 +79,47 @@ Adjust the base URL, model name, and authentication details only if your validat
 
 For the tested end-to-end run steps, see `examples/openai-compatible-tool-calling/run-llama-cpp.md`.
 
+## MCP HTTP For WebUI
+
+The repository now also includes an HTTP MCP entry point for browser-facing clients:
+
+```bash
+SEARXNG_BASE_URL=http://127.0.0.1:8081 \
+python3 tools/searxng/mcp_http_server.py --host 127.0.0.1 --port 8765
+```
+
+By default, the main MCP endpoint is:
+
+```text
+http://127.0.0.1:8765/mcp
+```
+
+For local development, the server binds to `127.0.0.1` by default and also exposes:
+
+- a simple health check at `http://127.0.0.1:8765/health`
+- a legacy SSE compatibility endpoint at `http://127.0.0.1:8765/sse`
+
+Use the `/mcp` URL first when llama.cpp WebUI asks for an MCP server URL.
+The SSE endpoint exists as a compatibility fallback for clients that still expect the older HTTP-with-SSE pattern.
+
+## Practical llama.cpp WebUI Flow
+
+1. Start SearXNG locally.
+2. Start the MCP HTTP server from this repository.
+3. Start `llama-server` with the WebUI enabled in your local llama.cpp environment.
+4. Open the WebUI in the browser.
+5. Add the MCP server URL `http://127.0.0.1:8765/mcp`.
+6. Prompt the model to search the web through the tool.
+
+If registration fails with the main endpoint on an older client build, try the compatibility URL:
+
+```text
+http://127.0.0.1:8765/sse
+```
+
 ## Practical Notes
 
 - Different llama.cpp deployments expose different model names and ports.
 - Tool calling depends on both the server surface and the selected model.
+- MCP HTTP support in llama.cpp is still evolving, so keep the exact URL in your local notes when you validate a specific revision.
 - Keep provider launch commands here, not in the core feature code or feature planning docs.

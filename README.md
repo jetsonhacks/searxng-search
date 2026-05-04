@@ -6,7 +6,7 @@
 
 This repository shows the full path from a local SearXNG install to a reusable search capability:
 
-- install and uninstall a local SearXNG instance
+- install, restart, and uninstall a local SearXNG instance
 - query SearXNG directly from Python
 - expose the same search behavior through MCP
 - connect that MCP server to OpenClaw
@@ -31,6 +31,14 @@ SEARXNG_BASE_URL=http://127.0.0.1:8081 python3 tools/searxng/search_searxng.py "
 This example uses `8081`. The install script defaults to `8080` unless you set `SEARXNG_PORT`, so use the same port value in both the install and search commands.
 
 When SearXNG is running locally on port `8081`, you can also open the browser interface at `http://localhost:8081/search`.
+
+If you stop the Docker container or prune stopped containers after installing, start SearXNG again with the same port:
+
+```bash
+SEARXNG_PORT=8081 bash tools/searxng/start-searxng.sh
+```
+
+The start script reuses `.local/searxng/settings.yml`. If the named container still exists, it starts it; if the container was pruned, it recreates the container from the existing local config and Docker image.
 
 For the full validation path, including MCP and the OpenClaw example, see `docs/Validation.md`.
 

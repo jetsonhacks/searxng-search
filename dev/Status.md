@@ -10,8 +10,9 @@ The repository now covers the full learning path from local SearXNG install thro
 
 ### Milestone 1
 - Added `tools/searxng/install-searxng.sh`
+- Added `tools/searxng/start-searxng.sh`
 - Added `tools/searxng/uninstall-searxng.sh`
-- Documented a clean local install and removal path for SearXNG
+- Documented a clean local install, restart, and removal path for SearXNG
 
 ### Milestone 2
 - Added `tools/searxng/search_searxng.py`
@@ -62,10 +63,11 @@ The repository now covers the full learning path from local SearXNG install thro
 - Confirmed the skill reflects the implemented structured result shape and error shape
 - Confirmed the skill notes the `SEARXNG_BASE_URL` expectation without promising unsupported behavior
 - Confirmed no unsupported claims were added to the skill
-- Compared `README.md` against the implemented repository progression: install or uninstall, Python search, MCP wrapper, OpenClaw example, and project-owned skill
+- Compared `README.md` against the implemented repository progression: install, restart, or uninstall, Python search, MCP wrapper, OpenClaw example, and project-owned skill
 - Compared `dev/Plan.md` against the current completed milestone state
 - Compared `dev/Status.md` against the final repository state for Milestone 6
 - Compared `examples/openclaw/README.md` against `tools/searxng/mcp_server.py` for tool name, required argument, optional arguments, command, working directory, and environment expectation
+- Ran `bash -n tools/searxng/start-searxng.sh tools/searxng/install-searxng.sh tools/searxng/uninstall-searxng.sh`
 - Ran `python3 -m py_compile tools/searxng/search_searxng.py tools/searxng/mcp_server.py`
 - Confirmed the lightweight validation instructions are practical and consistent with the implemented workflow
 - Confirmed the end-to-end learning path is understandable from the repository docs

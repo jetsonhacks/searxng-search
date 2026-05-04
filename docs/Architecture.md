@@ -11,7 +11,7 @@ The main goal is to keep the core search behavior understandable on its own, the
 ### Local SearXNG service
 
 The local SearXNG service is the search backend.
-It is installed and removed with the shell scripts under `tools/searxng/`.
+It is installed, restarted, and removed with the shell scripts under `tools/searxng/`.
 Everything else in the repository depends on this service being reachable.
 It is also a browser-facing web application, so when it is running locally on port `8081` you can open `http://localhost:8081/search`.
 
@@ -54,7 +54,7 @@ It describes when to use the search capability, what tool boundary to expect, an
 
 ## Repository Flow
 
-1. Install or remove the local SearXNG service with the shell scripts under `tools/searxng/`.
+1. Install, restart, or remove the local SearXNG service with the shell scripts under `tools/searxng/`.
 2. Open `http://localhost:8081/search` to use the browser-facing SearXNG interface when the local service runs on port `8081`.
 3. Validate direct search with `tools/searxng/search_searxng.py`.
 4. Follow `examples/openai-compatible-tool-calling/README.md` for the OpenAI-compatible tool-calling example.

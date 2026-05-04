@@ -11,7 +11,7 @@
 - OpenClaw validation is documentation-level unless you have OpenClaw installed locally.
 - Use the SearXNG port that matches your install configuration. The install script defaults to `8080` unless you set `SEARXNG_PORT`, and the documented validation history also includes examples on `8081`.
 
-## Milestone 1: Install And Uninstall
+## Milestone 1: Install, Start, And Uninstall
 
 Install SearXNG locally:
 
@@ -26,6 +26,14 @@ curl --silent --show-error --fail "http://127.0.0.1:<port>/search?q=smoke+test&f
 ```
 
 The response should be JSON and include a `results` field.
+
+If the container is stopped, start it again:
+
+```bash
+bash tools/searxng/start-searxng.sh
+```
+
+If stopped containers were pruned after installation, the same command recreates the named container from `.local/searxng/settings.yml` and the local `searxng/searxng:latest` image. Use `SEARXNG_PORT=<port>` when your install used a non-default port.
 
 If you install SearXNG locally on port `8081`, you can also verify the browser-facing interface at:
 

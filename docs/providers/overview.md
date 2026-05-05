@@ -9,7 +9,7 @@ The core capability in this repository is:
 - SearXNG browser access
 - SearXNG programmatic search from Python
 - OpenAI-compatible tool calling against a compatible model endpoint
-- MCP exposure
+- MCP exposure over stdio and HTTP
 
 Provider-specific runtime artifacts are separate:
 
@@ -19,7 +19,8 @@ Provider-specific runtime artifacts are separate:
 - model-specific notes
 - Docker recipes
 
-Keep using the core examples under `examples/` to understand the repository capability. Use the provider docs under `docs/providers/` when you need to stand up a compatible model endpoint for those examples.
+Keep using the core examples under `examples/` to understand the repository capability.
+Use the provider docs under `docs/providers/` when you need to stand up a compatible model endpoint or browser-facing model UI for those examples.
 
 ## Current Provider Notes
 

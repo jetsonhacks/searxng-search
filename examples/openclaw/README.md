@@ -3,7 +3,7 @@
 This example shows how to connect OpenClaw to the repository's MCP search server without changing the core search logic.
 
 The integration boundary is `tools/searxng/mcp_server.py`.
-OpenClaw talks to that MCP server over stdio, and the MCP server reuses the existing Milestone 2 SearXNG search behavior.
+OpenClaw talks to that MCP server over stdio, and the MCP server reuses the existing direct Python SearXNG search behavior.
 
 ## What This Example Covers
 
@@ -83,7 +83,7 @@ Optional arguments:
 - `limit`
 - `timeout`
 
-The response content is structured JSON text with the same normalized fields used by the Milestone 2 command-line search:
+The response content is structured JSON text with the same normalized fields used by the command-line search:
 
 - `ok`
 - `query`
@@ -136,5 +136,5 @@ python3 tools/searxng/mcp_server.py
 
 - It does not change `tools/searxng/search_searxng.py`
 - It does not change `tools/searxng/mcp_server.py`
-- It does not define the project-owned OpenClaw skill inline
+- It does not define the project-owned search skill inline
 - It does not introduce packaging or distribution setup

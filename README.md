@@ -8,9 +8,11 @@ This repository shows the full path from a local SearXNG install to a reusable s
 
 - install, restart, and uninstall a local SearXNG instance
 - query SearXNG directly from Python
+- call the search behavior from an OpenAI-compatible model loop
 - expose the same search behavior through MCP
 - connect that MCP server to OpenClaw
-- add a project-owned OpenClaw skill that matches the implemented MCP tool
+- connect the HTTP MCP server to llama.cpp WebUI
+- add a project-owned skill that matches the implemented MCP tool
 
 The goal is to keep each layer small, readable, and easy to validate.
 
@@ -74,9 +76,12 @@ This repository is organized as a progression:
 1. Browser use of local SearXNG
 2. Direct Python search with `tools/searxng/search_searxng.py`
 3. OpenAI-compatible tool calling under `examples/openai-compatible-tool-calling/`
-4. MCP exposure with `tools/searxng/mcp_server.py`
-5. OpenClaw example integration under `examples/openclaw/`
-6. Project-owned skill definition in `skills/searxng-search/SKILL.md`
+4. Standalone skill behavior demo under `examples/skill-demo/`
+5. Stdio MCP exposure with `tools/searxng/mcp_server.py`
+6. HTTP MCP exposure with `tools/searxng/mcp_http_server.py`
+7. OpenClaw example integration under `examples/openclaw/`
+8. llama.cpp WebUI MCP runbook under `examples/llama-cpp-mcp-demo/`
+9. Project-owned skill definition in `skills/searxng-search/SKILL.md`
 
 The first OpenAI-compatible tool-calling path has been validated end to end against llama.cpp and a local SearXNG instance.
 
@@ -87,9 +92,11 @@ The first OpenAI-compatible tool-calling path has been validated end to end agai
 - `docs/Validation.md` shows how to validate the repository end to end
 - `dev/README.md` explains what development artifacts live under `dev/`
 - `examples/openai-compatible-tool-calling/README.md` outlines the OpenAI-compatible tool-calling example
+- `examples/skill-demo/README.md` shows how the project skill changes standalone agent search behavior
 - `examples/openclaw/README.md` documents the OpenClaw example integration
-- `skills/searxng-search/SKILL.md` defines the project-owned OpenClaw skill
-- `dev/` contains milestone and development-history documents
+- `examples/llama-cpp-mcp-demo/run-llama-cpp-mcp-demo.md` documents the llama.cpp WebUI HTTP MCP demo
+- `skills/searxng-search/SKILL.md` defines the project-owned search skill
+- `dev/` contains development-history documents
 
 `docs/` is reserved for user-facing documentation.
 `dev/` contains development artifacts such as plans, status, feature specs, and ADRs.

@@ -11,7 +11,7 @@
 - OpenClaw validation is documentation-level unless you have OpenClaw installed locally.
 - Use the SearXNG port that matches your install configuration. The install script defaults to `8080` unless you set `SEARXNG_PORT`, and the documented validation history also includes examples on `8081`.
 
-## Milestone 1: Install, Start, And Uninstall
+## Install, Start, And Uninstall
 
 Install SearXNG locally:
 
@@ -47,7 +47,7 @@ Remove the local install:
 bash tools/searxng/uninstall-searxng.sh
 ```
 
-## Milestone 2: Direct Python Search
+## Direct Python Search
 
 Validate an explicit base URL:
 
@@ -80,7 +80,7 @@ Successful output should include:
 - `result_count`
 - `results`
 
-## Milestone 3: MCP Wrapper
+## MCP Wrapper
 
 First check the Python entry points parse cleanly:
 
@@ -184,7 +184,34 @@ The first OpenAI-compatible tool-calling path has been validated end to end agai
 
 See `examples/openai-compatible-tool-calling/README.md` for the validated command and the manual validation workflow.
 
+The OpenAI-compatible function tool in that example is named `searxng_search`.
+This is intentionally separate from the MCP tool name `search_searxng`.
+
+## Standalone Skill Demo
+
+Validate the standalone skill demo at the lightweight level:
+
+```bash
+python3 -m py_compile examples/skill-demo/simple_agent.py
+```
+
+Then compare `examples/skill-demo/README.md` against the implementation:
+- local function tool name `search_searxng`
+- model-facing inputs `query` and optional `limit`
+- script-level SearXNG settings `--searxng-base-url`, `SEARXNG_BASE_URL`, and `--timeout`
+- optional skill loading from `--skill`
+- optional model-only comparison from `--no-search-tool`
+
+## llama.cpp WebUI MCP Demo
+
+Validate the llama.cpp WebUI runbook at the documentation level by checking that `examples/llama-cpp-mcp-demo/run-llama-cpp-mcp-demo.md` matches:
+- the HTTP MCP command `python3 tools/searxng/mcp_http_server.py --host 127.0.0.1 --port 8765`
+- the default MCP URL `http://127.0.0.1:8765/mcp`
+- the health endpoint `http://127.0.0.1:8765/health`
+- the discovered MCP tool name `search_searxng`
+- the CORS preflight headers implemented by `tools/searxng/mcp_http_server.py`
+
 ## Development History
 
 The development-history documents live under `dev/`.
-Use them for milestone history and status tracking, not as the primary reader path through the repository.
+Use them for implementation history and status tracking, not as the primary reader path through the repository.

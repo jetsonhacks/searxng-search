@@ -52,4 +52,7 @@ If the request fails, the tool returns structured JSON text with:
 - Start with a focused `query`
 - Keep `limit` small unless more coverage is necessary
 - Treat `content` snippets as leads to verify, not final proof
+- For technical claims, prefer primary sources such as official documentation, release notes, standards documents, or project repositories when they appear in results
+- Use result `url` values as source links when summarizing search-backed answers
+- Say when the available results are weak, stale, or conflicting
 - For OpenClaw usage, stay within the MCP boundary described in `examples/openclaw/README.md`

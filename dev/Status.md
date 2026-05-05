@@ -2,9 +2,9 @@
 
 ## Current State
 
-Milestone 6 complete.
+Milestone 6 complete, with follow-up skill and HTTP MCP demonstrations added.
 
-The repository now covers the full learning path from local SearXNG install through Python search, MCP exposure, OpenClaw integration, and the project-owned OpenClaw skill.
+The repository now covers the full learning path from local SearXNG install through Python search, OpenAI-compatible tool calling, MCP exposure over stdio and HTTP, OpenClaw integration, llama.cpp WebUI integration, and the project-owned search skill.
 
 ## What Was Completed
 
@@ -43,6 +43,25 @@ The repository now covers the full learning path from local SearXNG install thro
 - Tightened OpenClaw example documentation to match the implemented required and optional MCP tool arguments
 - Added lightweight end-to-end validation guidance without introducing new test infrastructure
 
+### Follow-up Skill Demo
+- Added `examples/skill-demo/simple_agent.py`
+- Added `examples/skill-demo/README.md`
+- Centered the demo on the existing `skills/searxng-search/SKILL.md`
+- Documented a before-and-after comparison: same standalone `search_searxng` tool without skill guidance, then with the project skill loaded
+- Kept the standalone tool name and result shape aligned with the MCP tool while keeping base URL and timeout as script settings
+- Added a run header to `simple_agent.py` so demos show whether the mode is model-only, tool-only, or tool-plus-skill
+- Tightened `skills/searxng-search/SKILL.md` with concise source-handling guidance used by the demo
+- Removed the skill demo from the OpenClaw example so OpenClaw remains a separate integration path
+- Added links from `README.md`
+
+### Documentation Alignment Pass
+- Updated `AGENTS.md` so the current priority reflects maintenance after completed milestones
+- Updated `docs/Architecture.md` to describe the implemented OpenAI-compatible, skill-demo, stdio MCP, HTTP MCP, OpenClaw, and llama.cpp WebUI layers
+- Clarified that `examples/openai-compatible-tool-calling/` uses local function tool name `searxng_search`, while MCP uses `search_searxng`
+- Clarified that `examples/skill-demo/` exposes `query` and optional `limit` to the model, while base URL and timeout are script settings
+- Added validation notes for the standalone skill demo and llama.cpp WebUI MCP runbook
+- Removed milestone terminology from user-facing docs and examples so milestones remain a development-history concept under `dev/`
+
 ## Validation Notes
 
 - Ran `python3 tools/searxng/search_searxng.py --base-url http://127.0.0.1:8081 "jetson orin"`
@@ -63,6 +82,14 @@ The repository now covers the full learning path from local SearXNG install thro
 - Confirmed the skill reflects the implemented structured result shape and error shape
 - Confirmed the skill notes the `SEARXNG_BASE_URL` expectation without promising unsupported behavior
 - Confirmed no unsupported claims were added to the skill
+- Confirmed the standalone skill demo references the existing `skills/searxng-search/SKILL.md`
+- Confirmed the standalone skill demo does not introduce a second skill file
+- Confirmed the skill's source-handling guidance uses existing result fields and does not require tool changes
+- Ran `python3 -m py_compile examples/skill-demo/simple_agent.py`
+- Reviewed `examples/llama-cpp-mcp-demo/run-llama-cpp-mcp-demo.md` against `tools/searxng/mcp_http_server.py`
+- Ran `python3 -m py_compile tools/searxng/search_searxng.py tools/searxng/mcp_common.py tools/searxng/mcp_server.py tools/searxng/mcp_http_server.py examples/openai-compatible-tool-calling/tool_calling_example.py examples/skill-demo/simple_agent.py`
+- Ran `bash -n tools/searxng/start-searxng.sh tools/searxng/install-searxng.sh tools/searxng/uninstall-searxng.sh`
+- Ran `rg -n "Milestone|milestone" README.md docs examples skills AGENTS.md` and confirmed no matches outside development-history docs
 - Compared `README.md` against the implemented repository progression: install, restart, or uninstall, Python search, MCP wrapper, OpenClaw example, and project-owned skill
 - Compared `dev/Plan.md` against the current completed milestone state
 - Compared `dev/Status.md` against the final repository state for Milestone 6
@@ -74,7 +101,7 @@ The repository now covers the full learning path from local SearXNG install thro
 
 ## Current Focus
 
-Milestones complete. Keep the repository stable, readable, and easy to validate.
+Milestones complete. Keep the repository stable, readable, and easy to validate. The current skill demo is standalone and should remain centered on the existing project-owned skill rather than introducing parallel skill examples.
 
 ## Next Step
 

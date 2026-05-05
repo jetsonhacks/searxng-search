@@ -22,6 +22,7 @@ It has been validated successfully against llama.cpp with a local SearXNG instan
 6. Return the structured search result to the model and print the final answer
 
 The example reuses the existing repository SearXNG search logic instead of reimplementing the HTTP request path.
+The local function tool is named `searxng_search`; the MCP examples use `search_searxng`.
 
 ## Dependencies
 
@@ -91,6 +92,7 @@ You can also use environment variables for some inputs:
 - `SEARXNG_BASE_URL`
 
 The script prints a short trace when the model calls `searxng_search`, then prints the final answer.
+The tool result is compact and omits `score`; the direct Python and MCP outputs include `score`.
 
 Use the exact model ID returned by `/v1/models`. Do not guess or shorten the model name.
 

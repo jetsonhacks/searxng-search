@@ -7,10 +7,12 @@ This file is the operational guide for coding agents working in this repository.
 ## Goals
 
 - Install and uninstall SearXNG cleanly
+- Restart a local SearXNG install after the container has stopped or been pruned
 - Demonstrate SearXNG search from Python
 - Expose search through MCP
+- Demonstrate OpenAI-compatible tool calling
 - Show integration with OpenClaw
-- Add a project-owned OpenClaw skill
+- Add a project-owned search skill
 
 ## Constraints
 
@@ -24,10 +26,10 @@ This file is the operational guide for coding agents working in this repository.
 
 ## Workflow
 
-- Work one milestone at a time
+- Work one focused phase at a time
 - Prefer small diffs
 - Explain what was changed and how it was validated
-- Keep `dev/Status.md` up to date when milestones change or important implementation decisions are made
+- Keep `dev/Status.md` up to date when project phases change or important implementation decisions are made
 - Preserve the learning value of the repository; do not hide important steps behind unnecessary abstractions
 
 ## Coding Style
@@ -55,8 +57,10 @@ This file is the operational guide for coding agents working in this repository.
 
 ## Current Priority
 
-Implement Milestone 1:
-- `tools/searxng/install-searxng.sh`
-- `tools/searxng/uninstall-searxng.sh`
+The initial implementation phases are complete.
 
-These scripts should prepare the system for a clean local SearXNG install and removal, and should be easy to inspect and understand.
+Current maintenance priority:
+- Keep documentation aligned with the implemented code
+- Keep examples small, inspectable, and easy to validate
+- Preserve the distinction between core search behavior, MCP boundaries, OpenAI-compatible examples, OpenClaw integration, and skill guidance
+- Update `dev/Status.md` when important implementation or documentation decisions change

@@ -62,6 +62,11 @@ The repository now covers the full learning path from local SearXNG install thro
 - Added validation notes for the standalone skill demo and llama.cpp WebUI MCP runbook
 - Removed milestone terminology from user-facing docs and examples so milestones remain a development-history concept under `dev/`
 
+### llama.cpp WebUI CORS Maintenance
+- Updated `tools/searxng/mcp_http_server.py` so browser CORS responses allow both `http://127.0.0.1:8080` and `http://localhost:8080`
+- Changed CORS handling to echo the incoming origin only when it is in the local WebUI allowlist
+- Updated the llama.cpp WebUI runbook and validation notes to document that browsers treat `127.0.0.1` and `localhost` as different origins
+
 ## Validation Notes
 
 - Ran `python3 tools/searxng/search_searxng.py --base-url http://127.0.0.1:8081 "jetson orin"`
@@ -98,6 +103,9 @@ The repository now covers the full learning path from local SearXNG install thro
 - Ran `python3 -m py_compile tools/searxng/search_searxng.py tools/searxng/mcp_server.py`
 - Confirmed the lightweight validation instructions are practical and consistent with the implemented workflow
 - Confirmed the end-to-end learning path is understandable from the repository docs
+- Ran `python3 -m py_compile tools/searxng/mcp_http_server.py`
+- Ran CORS preflight checks for `Origin: http://127.0.0.1:8080` and `Origin: http://localhost:8080`
+- Confirmed each allowed local WebUI origin is echoed in `Access-Control-Allow-Origin`
 
 ## Current Focus
 

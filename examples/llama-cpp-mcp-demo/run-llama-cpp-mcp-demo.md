@@ -93,6 +93,12 @@ Open this URL in a web browser:
 http://127.0.0.1:8080
 ```
 
+The MCP HTTP server allows both local WebUI origins:
+- `http://127.0.0.1:8080`
+- `http://localhost:8080`
+
+Use one of those exact origins when opening the WebUI. Browsers treat `127.0.0.1` and `localhost` as different origins for CORS.
+
 ## 5. Add The MCP Server In The Browser UI
 
 In the WebUI MCP server configuration, enter:
@@ -144,18 +150,20 @@ curl --silent --show-error \
 
 ```bash
 curl -i -X OPTIONS http://127.0.0.1:8765/mcp \
-  -H 'Origin: http://localhost:8080' \
+  -H 'Origin: http://127.0.0.1:8080' \
   -H 'Access-Control-Request-Method: POST' \
   -H 'Access-Control-Request-Headers: content-type,mcp-protocol-version'
 ```
 
 Expected response headers include:
-- `Access-Control-Allow-Origin: http://localhost:8080`
+- `Access-Control-Allow-Origin: http://127.0.0.1:8080`
 - `Access-Control-Allow-Methods: POST, OPTIONS`
 - `Access-Control-Allow-Headers: content-type, mcp-protocol-version`
 
+The server also allows `http://localhost:8080` and echoes that value when the browser request uses it as the origin.
+
 - If the browser reports a CORS failure:
-  Confirm the MCP server is the repository's current `tools/searxng/mcp_http_server.py` implementation and restart it.
+  Confirm the MCP server is the repository's current `tools/searxng/mcp_http_server.py` implementation and restart it. Also confirm the WebUI origin in the browser address bar is either `http://127.0.0.1:8080` or `http://localhost:8080`.
 
 - If MCP does not connect from the browser:
   Confirm `llama-server` was started with `--webui-mcp-proxy`.

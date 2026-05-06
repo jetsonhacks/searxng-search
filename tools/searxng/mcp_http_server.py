@@ -15,6 +15,12 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from mcp_common import handle_request, make_error
 
 
+ALLOWED_ORIGINS = {
+    "http://localhost:8080",
+    "http://127.0.0.1:8080",
+}
+
+
 class SessionRegistry:
     """Track legacy SSE sessions for clients that expect an event stream."""
 
@@ -300,9 +306,9 @@ def make_handler(args: argparse.Namespace):
         def _send_cors_headers(self) -> None:
             """Send the minimal CORS headers needed for local WebUI testing."""
             origin = self.headers.get("Origin")
-            allowed_origin = origin if origin in {"http://localhost:8080"} else "http://localhost:8080"
-            self.send_header("Access-Control-Allow-Origin", allowed_origin)
-            self.send_header("Vary", "Origin")
+            if origin in ALLOWED_ORIGINS:
+                self.send_header("Access-Control-Allow-Origin", origin)
+                self.send_header("Vary", "Origin")
 
         def _write_sse_event(self, event_name: str, data: str) -> None:
             """Write one SSE event block."""

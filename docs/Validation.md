@@ -210,6 +210,8 @@ Validate the llama.cpp WebUI runbook at the documentation level by checking that
 - the health endpoint `http://127.0.0.1:8765/health`
 - the discovered MCP tool name `search_searxng`
 - the CORS preflight headers implemented by `tools/searxng/mcp_http_server.py`
+- the allowed local WebUI origins `http://127.0.0.1:8080` and `http://localhost:8080`
+- the CORS behavior that echoes the incoming origin when it is in the allowlist
 
 ## Development History
 

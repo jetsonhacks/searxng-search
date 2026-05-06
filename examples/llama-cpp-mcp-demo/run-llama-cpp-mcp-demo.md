@@ -16,7 +16,8 @@ The demo shows:
 - the repository's local SearXNG workflow is available
 - you can run `tools/searxng/mcp_http_server.py`
 - you have access to the tested llama.cpp Docker image:
-  - `ghcr.io/nvidia-ai-iot/llama_cpp:gemma4-jetson-orin`
+ - `ghcr.io/nvidia-ai-iot/llama_cpp:gemma4-jetson-orin` (usable on AGX Orin, Orin Nano)
+ - `ghcr.io/nvidia-ai-iot/llama_cpp:gemma4-jetson-thor` (for AGX Thor)
 
 Run commands from the repository root.
 
@@ -57,24 +58,30 @@ curl --silent --show-error --fail http://127.0.0.1:8765/health
 
 Open a third terminal for the llama.cpp container.
 
-Start llama.cpp WebUI with MCP proxy support enabled:
+Start llama.cpp WebUI with MCP proxy support enabled (Jetson Orin):
 
 ```bash
 sudo docker run -it --rm --pull always --runtime=nvidia --network host \
   -v $HOME/.cache/huggingface:/root/.cache/huggingface \
   ghcr.io/nvidia-ai-iot/llama_cpp:gemma4-jetson-orin \
   llama-server \
+  -hf unsloth/gemma-4-E2B-it-GGUF:Q4_K_M \
+  --jinja \
+  --webui-mcp-proxy
+```
+
+For a larger Thor setup, use:
+
+```bash
+sudo docker run -it --rm --pull always --runtime=nvidia --network host \
+  -v $HOME/.cache/huggingface:/root/.cache/huggingface \
+  ghcr.io/nvidia-ai-iot/llama_cpp:gemma4-jetson-thor \
+  llama-server \
   -hf ggml-org/gemma-4-26B-A4B-it-GGUF:Q4_K_M \
   --jinja \
   --webui-mcp-proxy
 ```
 
-This model is the tested example model for the demo.
-On smaller machines, you may prefer:
-
-```text
-ggml-org/gemma-4-E2B-it-GGUF:Q8_0
-```
 
 `--webui-mcp-proxy` enables llama.cpp's WebUI MCP proxy for trusted local development and testing.
 

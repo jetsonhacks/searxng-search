@@ -16,6 +16,8 @@ This repository shows the full path from a local SearXNG install to a reusable s
 
 The goal is to keep each layer small, readable, and easy to validate.
 
+Supporting video: https://youtu.be/zTs9SJw7-mU
+
 ## Quick Start
 
 Bring up a local SearXNG instance:
